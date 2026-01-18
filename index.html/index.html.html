@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+<meta charset="UTF-8">
+<title>กดดูสิ...</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background:#fff0f5;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:sans-serif;
+  overflow:hidden;
+}
+
+.container{
+  text-align:center;
+}
+
+/* ตัวการ์ตูน */
+.cute{
+  font-size:80px;
+  cursor:pointer;
+}
+
+/* ปุ่ม Open */
+#openBtn{
+  margin-top:20px;
+  padding:10px 30px;
+  font-size:18px;
+  border:none;
+  border-radius:25px;
+  background:#ff5c8a;
+  color:white;
+  display:none;
+  cursor:pointer;
+}
+
+/* ข้อความ */
+#message{
+  margin-top:25px;
+  font-size:28px;
+  color:#d6004c;
+  display:none;
+}
+
+/* หัวใจ */
+.heart{
+  position:absolute;
+  font-size:22px;
+  animation:floatUp 3s linear forwards;
+}
+
+/* ชื่อ */
+.name{
+  position:absolute;
+  font-size:32px;
+  color:#ff4d6d;
+  font-weight:bold;
+  animation:floatUp 4s linear forwards;
+}
+
+@keyframes floatUp{
+  from{
+    transform:translateY(0);
+    opacity:1;
+  }
+  to{
+    transform:translateY(-350px);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <!-- กดตรงนี้ก่อน -->
+  <div class="cute" onclick="showOpen()">😊</div>
+
+  <!-- ปุ่ม Open -->
+  <div>
+    <button id="openBtn" onclick="showLove()">Open 💌</button>
+  </div>
+
+  <!-- ข้อความบอกรัก -->
+  <div id="message">I miss you 💖</div>
+</div>
+
+<script>
+function showOpen(){
+  document.getElementById("openBtn").style.display = "inline-block";
+}
+
+function showLove(){
+  // แสดงข้อความ (สำคัญมาก)
+  document.getElementById("message").style.display = "block";
+
+  // หัวใจ
+  for(let i=0;i<15;i++){
+    createHeart();
+  }
+
+  // ชื่อ Nouna
+  for(let i=0;i<15;i++){
+    createName();
+  }
+}
+
+function createHeart(){
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "💗";
+  h.style.left = Math.random()*window.innerWidth+"px";
+  h.style.bottom = "0px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),3000);
+}
+
+function createName(){
+  const n = document.createElement("div");
+  n.className = "name";
+  n.innerHTML = "Nouna";
+  n.style.left = Math.random()*window.innerWidth+"px";
+  n.style.bottom = "0px";
+  document.body.appendChild(n);
+  setTimeout(()=>n.remove(),4000);
+}
+</script>
+
+</body>
+</html>
